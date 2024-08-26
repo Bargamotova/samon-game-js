@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-bg: #011F3F;
+  --clr-red: rgb(212, 34, 34);
+  --clr-green: rgb(7, 148, 0);
+  --clr-blue: rgb(44, 44, 207);
+  --clr-yellow: rgb(206, 206, 29);
+  --clr-electro: #20ff00;
+  --clr-black: #16181b;
+  --clr-accent: red;
+  --shadow: 0 0 10px hsla(0, 0%, 100%, 0.5),
+    0 0 20px hsla(0, 0%, 100%, 0.4),
+    0 0 30px hsla(0, 0%, 100%, 0.3),
+    0 0 0 2px var(--clr-electro);
+  ;
+  --size: 20px;
+  --size-negative: -20px;
+  --shadow-accent: 0 0 15px 5px hsla(0, 100%, 50%, 0.5),
+    0 0 20px 5px hsla(0, 100%, 50%, 0.3);
+}
+
+body {
+  text-align: center;
+  background-color: var(--clr-bg);
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.header {
+  margin-bottom: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive, monospace;
+  font-size: 2.4rem;
+  color: var(--clr-electro);
+  text-shadow:
+    0 0 1px #22ff0094,
+    0 0 5px hsla(102, 100%, 72%, 0.5);
+  line-height: 1.5;
+  text-wrap: balance;
+  max-width: 1000px;
+  padding-top: 5%;
+}
+
+#text {
+  font-family: 'Press Start 2P', cursive, monospace;
+  color: var(--clr-accent);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  text-shadow: 0 0 4px var(--clr-accent);
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 80%;
+  margin: auto;
+  grid-template-rows: 40vmin 200px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+
+  position: relative;
+}
+
+.btn {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid var(--clr-black);
+  border-radius: 20%;
+  box-shadow: 0 0 0 1px var(--clr-electro);
+  ;
+}
+
+.btn-start {
+  margin-top: 15%;
+  width: unset;
+  height: 60px;
+  padding-inline: 15px;
+  border-width: 5px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  color: var(--clr-electro);
+  background: var(--clr-bg);
+  box-shadow: 0 0 5px var(--clr-electro);
+  transition: background 0.3, color 0.3, shadow 0.3;
+  font-family: 'Press Start 2P', cursive, monospace;
+  line-height: 1;
+  text-wrap: nowrap;
+}
+
+.game-over {
+  background-color: var(--clr-accent);
+  opacity: 0.8;
+}
+
+.red {
+  background-color: var(--clr-red);
+}
+
+.green {
+  background-color: var(--clr-green);
+}
+
+.blue {
+  background-color: var(--clr-blue);
+}
+
+.yellow {
+  background-color: var(--clr-yellow);
+}
+
+.btn-start:hover {
+  box-shadow: var(--shadow);
+  color: var(--clr-bg);
+  background: var(--clr-electro);
+}
+
+.clicked {
+  box-shadow: var(--shadow-accent);
+  filter: opacity(0.4);
+}
+
+.disable-btn {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.animate {
+  animation: rotateBtn 4000ms infinite backwards;
+}
+
+@keyframes rotateBtn {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-green {
+  animation: animateGreen 4000ms infinite forwards;
+}
+
+.animate-red {
+  animation: animateRed 4000ms infinite forwards;
+}
+
+.animate-blue {
+  animation: animateBlue 4000ms infinite forwards;
+}
+
+.animate-yellow {
+  animation: animateYellow 4000ms infinite forwards;
+}
+
+@keyframes animateGreen {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+
+  50% {
+    transform: translate(var(--size-negative), var(--size-negative)) scale(0.3) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+}
+
+@keyframes animateRed {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+
+  50% {
+    transform: translate(var(--size), var(--size-negative)) scale(0.3) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+}
+
+@keyframes animateYellow {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+
+  50% {
+    transform: translate(var(--size-negative), var(--size)) scale(0.3) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes animateBlue {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+
+  50% {
+    transform: translate(var(--size), var(--size)) scale(0.3) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+}
